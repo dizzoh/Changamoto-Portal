@@ -32,14 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   RichText(
                     text: TextSpan(
-                        text: "Welcome to ",
+                        text: isSignupScreen ? "Welcome to " : "Chat withus",
                         style: TextStyle(
                             fontSize: 25.0,
                             letterSpacing: 2,
                             color: Colors.amber),
                         children: [
                           TextSpan(
-                              text: "Changamoto Portal",
+                              text: isSignupScreen ? "Changamoto Portal" : "",
                               style: TextStyle(
                                   fontSize: 25.0,
                                   letterSpacing: 2,
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 5,
                   ),
                   Text(
-                    "Signup to Proceed",
+                    isSignupScreen ? "Signup to Proceed" : "Signin for Chats",
                     style: TextStyle(
                       fontSize: 25,
                       letterSpacing: 1,
@@ -63,10 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           buildBottomHalfContainer(true),
           Positioned(
-            top: 200,
+            top: isSignupScreen ? 200 : 230,
             child: Container(
               padding: EdgeInsets.all(20),
-              height: 350,
+              height: isSignupScreen ? 350 : 250,
               width: MediaQuery.of(context).size.width - 40,
               margin: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
@@ -78,175 +78,80 @@ class _LoginScreenState extends State<LoginScreen> {
                         blurRadius: 15,
                         spreadRadius: 5),
                   ]),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSignupScreen = false;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              "LOGIN",
-                              style: TextStyle(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignupScreen = false;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: !isSignupScreen
+                                        ? Palette.textColor1
+                                        : Palette.textColor2),
+                              ),
+                              if (!isSignupScreen)
+                                Container(
+                                  margin: EdgeInsets.only(top: 3),
+                                  height: 2,
+                                  width: 55,
+                                  color: Colors.orange,
+                                )
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignupScreen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                "REGISTER",
+                                style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: !isSignupScreen
-                                      ? Palette.textColor1
-                                      : Palette.textColor2),
-                            ),
-                            if (!isSignupScreen)
-                              Container(
-                                margin: EdgeInsets.only(top: 3),
-                                height: 2,
-                                width: 55,
-                                color: Colors.orange,
-                              )
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isSignupScreen = true;
-                          });
-                        },
-                        child: Column(
-                          children: [
-                            Text(
-                              "REGISTER",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: isSignupScreen
-                                    ? Palette.activeColor
-                                    : Palette.textColor2,
-                              ),
-                            ),
-                            if (isSignupScreen)
-                              Container(
-                                margin: EdgeInsets.only(top: 3),
-                                height: 2,
-                                width: 55,
-                                color: Colors.orange,
-                              )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: [
-                        buildTextField(MaterialCommunityIcons.account_outline,
-                            "First Name", false, false),
-                        buildTextField(MaterialCommunityIcons.email_outline,
-                            "email", false, true),
-                        buildTextField(MaterialCommunityIcons.lock_outline,
-                            "password", true, false),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10, left: 10),
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isMale = true;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 30,
-                                      height: 30,
-                                      margin: EdgeInsets.only(right: 8),
-                                      decoration: BoxDecoration(
-                                          color: isMale
-                                              ? Palette.textColor2
-                                              : Colors.transparent,
-                                          border: Border.all(
-                                              width: 1,
-                                              color: isMale
-                                                  ? Colors.transparent
-                                                  : Palette.textColor1),
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Icon(
-                                        MaterialCommunityIcons.account_outline,
-                                        color: isMale
-                                            ? Colors.white
-                                            : Palette.iconColor,
-                                      ),
-                                    ),
-                                    Text(
-                                      "Male",
-                                      style:
-                                          TextStyle(color: Palette.textColor1),
-                                    )
-                                  ],
+                                  color: isSignupScreen
+                                      ? Palette.activeColor
+                                      : Palette.textColor2,
                                 ),
                               ),
-                              SizedBox(
-                                width: 30,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isMale = false;
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 30,
-                                      height: 30,
-                                      margin: EdgeInsets.only(right: 8),
-                                      decoration: BoxDecoration(
-                                          color: isMale
-                                              ? Colors.transparent
-                                              : Palette.textColor2,
-                                          border: Border.all(
-                                              width: 1,
-                                              color: isMale
-                                                  ? Palette.textColor1
-                                                  : Colors.transparent),
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Icon(
-                                        MaterialCommunityIcons.account_outline,
-                                        color: isMale
-                                            ? Palette.iconColor
-                                            : Colors.white,
-                                      ),
-                                    ),
-                                    Text(
-                                      "Female",
-                                      style:
-                                          TextStyle(color: Palette.textColor1),
-                                    )
-                                  ],
-                                ),
-                              ),
+                              if (isSignupScreen)
+                                Container(
+                                  margin: EdgeInsets.only(top: 3),
+                                  height: 2,
+                                  width: 55,
+                                  color: Colors.orange,
+                                )
                             ],
                           ),
                         )
                       ],
                     ),
-                  )
-                ],
+                    if (isSignupScreen) buildSignupSection(),
+                    if (!isSignupScreen) buildSigninSection()
+                  ],
+                ),
               ),
             ),
           ),
           //to add the submit button
           buildBottomHalfContainer(false),
           Positioned(
-              top: MediaQuery.of(context).size.height - 100,
+              top: MediaQuery.of(context).size.height - 30,
               right: 0,
               left: 0,
               child: Column(
@@ -262,9 +167,148 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Positioned buildBottomHalfContainer(bool showShadow) {
+  Container buildSigninSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          buildTextField(Icons.mail_outline, "info@demouri.com", false, true),
+          buildTextField(
+              MaterialCommunityIcons.lock_outline, "**********", true, false),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                      value: isRememberMe,
+                      activeColor: Palette.textColor2,
+                      onChanged: (value) {
+                        setState(() {
+                          isRememberMe = !isRememberMe;
+                        });
+                      }),
+                  Text(
+                    "Remember me",
+                    style: TextStyle(fontSize: 12, color: Palette.textColor1),
+                  )
+                ],
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Forgot Password",
+                  style: TextStyle(fontSize: 12, color: Palette.textColor1),
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Container buildSignupSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          buildTextField(MaterialCommunityIcons.account_outline, "First Name",
+              false, false),
+          buildTextField(MaterialCommunityIcons.account_outline, "Last Name",
+              false, false),
+          buildTextField(
+              MaterialCommunityIcons.location_enter, "Region", false, false),
+          buildTextField(
+              MaterialCommunityIcons.email_outline, "email", false, true),
+          buildTextField(
+              MaterialCommunityIcons.lock_outline, "password", true, false),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, left: 10),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isMale = true;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        margin: EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                            color: isMale
+                                ? Palette.textColor2
+                                : Colors.transparent,
+                            border: Border.all(
+                                width: 1,
+                                color: isMale
+                                    ? Colors.transparent
+                                    : Palette.textColor1),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Icon(
+                          MaterialCommunityIcons.account_outline,
+                          color: isMale ? Colors.white : Palette.iconColor,
+                        ),
+                      ),
+                      Text(
+                        "Male",
+                        style: TextStyle(color: Palette.textColor1),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isMale = false;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        margin: EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                            color: isMale
+                                ? Colors.transparent
+                                : Palette.textColor2,
+                            border: Border.all(
+                                width: 1,
+                                color: isMale
+                                    ? Palette.textColor1
+                                    : Colors.transparent),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Icon(
+                          MaterialCommunityIcons.account_outline,
+                          color: isMale ? Palette.iconColor : Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "Female",
+                        style: TextStyle(color: Palette.textColor1),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildBottomHalfContainer(bool showShadow) {
     return Positioned(
-      top: 500,
+      top: isSignupScreen ? 500 : 430,
       left: 0,
       right: 0,
       child: Center(
