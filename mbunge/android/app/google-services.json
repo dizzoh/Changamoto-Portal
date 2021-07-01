@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "991249854602",
+    "project_id": "mbunge-d1b63",
+    "storage_bucket": "mbunge-d1b63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991249854602:android:edfa86047f4ef7ba393d73",
+        "android_client_info": {
+          "package_name": "com.dizzoh.mbunge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991249854602-8c7edhn39j3nt4ni16pqs3ihv3srm5n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0p65YXTGYCWBLmXNXbxZneKFuBB1OccI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991249854602-8c7edhn39j3nt4ni16pqs3ihv3srm5n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

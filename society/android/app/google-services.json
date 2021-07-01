@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518427580954",
+    "project_id": "society-230c0",
+    "storage_bucket": "society-230c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518427580954:android:f172460cbfd421bf300fa3",
+        "android_client_info": {
+          "package_name": "com.example.mastering_payments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518427580954-h7qegp2v835r4l2e0o74fd5tg4gbug4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATilzj7VthwhA0TH98rmZ_7OPzEetE8Zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518427580954-h7qegp2v835r4l2e0o74fd5tg4gbug4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
